@@ -11,6 +11,7 @@ void WindowOfPlay::getSomethink()
 
 short WindowOfPlay::play()
 {
+	int sumOfFrames=0;
 	Event event;
 	
 	while (mainWindow->isOpen())
@@ -40,6 +41,26 @@ short WindowOfPlay::play()
 		}
 		mainWindow->clear(Color::Red);
 		mainWindow->display();
+
+		if (sumOfFrames < 5 && myDeck->isEmpty() == false)
+		{
+		
+			
+			try
+			{
+				PlayingCard temp = myDeck->getCard();
+				std::cout << temp.getName() << std::endl;
+			}
+			catch(int)
+			{
+				std::cout <<"ERROR::new card not founr" <<std::endl;
+			}
+				
+			//myDeck->showDeck();
+
+
+		}
+		sumOfFrames++;
 
 	}
 	
