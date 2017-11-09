@@ -19,6 +19,6 @@ public:
 public:
 	RenderWindow *mainWindow;
 	Deck *myDeck;
-	void getSomethink();// usun¹æ 
+	void giveSomethink();// usun¹æ 
 };
 

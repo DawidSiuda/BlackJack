@@ -17,6 +17,7 @@ class LinkedList
 public:
 	LinkedList();
 	~LinkedList();
+
 	void getElements(bool getOnConsole = false);//show all cards in console
 	PlayingCard getCard(int numberOfCard);//select card from deck of cards and give it in return
 	unsigned int getLength(bool onConsole = false);

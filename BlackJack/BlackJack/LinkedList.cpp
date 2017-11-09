@@ -50,35 +50,46 @@ void LinkedList::addElement(PlayingCard *data)
 
 bool LinkedList::delElement(int index)
 {
+	//std::cout << "linkedlist linia 52 indeX :: "<< index << std::endl;
+
 	if (index >= length)
 	{
 		std::cout << "ERROR::function \"delCard(int)\" from linkedList got bad argument" << std::endl;
 		return false;
 	}
 
-	Node* head = this->back;
-	for (int i = 0; i<length; i++)
+	Node* selectCard = this->head;
+	for (int i = 0; i<index; i++)
 	{
-		head = head->next;
+		selectCard  = selectCard->previous;
 	}
-	//cout << head << endl;
-	/*Node* editor;// = temp->previous;
+	//cout << selectCart << endl;
+	Node* editor;// = temp->previous;
 	
-	if (head->next != NULL)
+	if (selectCard->next != NULL)
 	{
-		editor = head->next;
-		editor->previous = head->previous;
+		
+		editor = selectCard->next;
+		editor->previous = selectCard->previous;
+	}
+	else
+	{
+		head = selectCard->previous;
 	}
 	
 
-	if (head->previous != NULL)
+	if (selectCard->previous != NULL)
 	{
-		editor = head->previous;
-		editor->next = head->next;
+		editor = selectCard->previous;
+		editor->next = selectCard->next;
+	}
+	else
+	{
+		back = selectCard->next;
 	}
 
-	//delete head;
-	*/
+	delete selectCard;
+	
 
 	
 	length--;
@@ -93,7 +104,7 @@ void LinkedList::getElements(bool getOnConsole)
 		int i = 1;
 		while (head) 
 		{
-			std::cout << i << ": " << head->data->getName() << std::endl;
+			std::cout << i << "  : " << head->data->getName() << std::endl;
 			head = head->next;
 			i++;
 		}

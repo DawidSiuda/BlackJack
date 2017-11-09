@@ -3,7 +3,7 @@
 
 
 
-void WindowOfPlay::getSomethink()
+void WindowOfPlay::giveSomethink()
 {
 	printf("----nic--------\n");
 }
@@ -12,6 +12,7 @@ void WindowOfPlay::getSomethink()
 short WindowOfPlay::play()
 {
 	int sumOfFrames=0;
+	int temp = 0;
 	Event event;
 	
 	while (mainWindow->isOpen())
@@ -32,7 +33,7 @@ short WindowOfPlay::play()
 					{
 						case(Keyboard::X):
 						{
-							getSomethink();
+							giveSomethink();
 							return 0;
 						}
 					}
@@ -42,14 +43,13 @@ short WindowOfPlay::play()
 		mainWindow->clear(Color::Red);
 		mainWindow->display();
 
-		if (sumOfFrames < 5 && myDeck->isEmpty() == false)
+		if (myDeck->isEmpty() == false)
 		{
-		
-			
+
 			try
 			{
 				PlayingCard temp = myDeck->getCard();
-				std::cout << temp.getName() << std::endl;
+				//std::cout << " We have a: "<< temp.getName() << std::endl;
 			}
 			catch(int)
 			{
@@ -58,6 +58,16 @@ short WindowOfPlay::play()
 				
 			//myDeck->showDeck();
 
+
+		}
+		else
+		{
+			myDeck->cardShuffle();
+			std::cout << "Tasuje :"<< sumOfFrames << " " << sumOfFrames - temp << std::endl;
+			
+			temp = sumOfFrames;
+
+			//myDeck->showDeck();
 
 		}
 		sumOfFrames++;
@@ -70,7 +80,7 @@ short WindowOfPlay::play()
 WindowOfPlay::WindowOfPlay(RenderWindow *handleToRenderWindow)
 {
 	mainWindow = handleToRenderWindow;
-	myDeck = new Deck(1);
+	myDeck = new Deck(4);
 }
 WindowOfPlay::~WindowOfPlay()
 {
