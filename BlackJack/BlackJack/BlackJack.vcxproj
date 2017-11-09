@@ -124,11 +124,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CardFigure.cpp" />
+    <ClCompile Include="CardColor.cpp" />
+    <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayingCard.cpp" />
     <ClCompile Include="WindowOfMenu.cpp" />
     <ClCompile Include="WindowOfPlay.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Deck.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="PlayingCard.h" />
     <ClInclude Include="WindowOfMenu.h" />
     <ClInclude Include="WindowOfPlay.h" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
 #include "WindowOfPlay.h"
+#include "Deck.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -17,6 +18,7 @@ public:
 	~WindowOfPlay();
 public:
 	RenderWindow *mainWindow;
+	Deck *myDeck;
 	void getSomethink();// usun¹æ 
 };
 

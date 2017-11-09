@@ -1,9 +1,7 @@
 #include "WindowOfPlay.h"
 
 
-WindowOfPlay::~WindowOfPlay()
-{
-}
+
 
 void WindowOfPlay::getSomethink()
 {
@@ -51,5 +49,9 @@ short WindowOfPlay::play()
 WindowOfPlay::WindowOfPlay(RenderWindow *handleToRenderWindow)
 {
 	mainWindow = handleToRenderWindow;
+	myDeck = new Deck(1);
 }
-
+WindowOfPlay::~WindowOfPlay()
+{
+	delete myDeck;
+}

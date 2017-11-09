@@ -4,6 +4,7 @@
 
 WindowOfMenu::WindowOfMenu()
 {
+
 }
 
 

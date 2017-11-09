@@ -1,5 +1,2 @@
-﻿  main.cpp
-  WindowOfPlay.cpp
-  Generating Code...
-  BlackJack.vcxproj -> C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.exe
-  BlackJack.vcxproj -> C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.pdb (Partial PDB)
+﻿  Deck.cpp
+LINK : fatal error LNK1201: error writing to program database 'C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.pdb'; check for insufficient disk space, invalid path, or insufficient privilege
