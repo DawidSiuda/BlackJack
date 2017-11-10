@@ -83,34 +83,41 @@ unsigned short Player::getNumberOfCards()
 	return numberOfCards;
 }
 
-void Player::drawCards(int x, int y, RenderWindow * currentWindow)
+void Player::drawCards(int x, int y, RenderWindow * currentWindow, bool topOrBottom)
 {
-	Texture backgroundTexture;
+	/*Texture backgroundTexture;
 	Texture shapeTexture;
-	Sprite paintedCard;
-
-	for (int i = 0; i < numberOfCards; i++)
-	{
-		/*
-		switch (playersCard[i].getColor())
-		{
-		case HEARTS:
-			backgroundTexture.loadFromFile("cardsTemplate\\_heart.png");
-			break;
-		case TILES:
-			backgroundTexture.loadFromFile("cardsTemplate\\_karo.png");
-			break;
-		case CLOVERS:
-			backgroundTexture.loadFromFile("cardsTemplate\\_trefl.png");
-			break;
-		case PICKES:
-			backgroundTexture.loadFromFile("cardsTemplate\\_pik.png");
-			break;
-		}
-		paintedCard.setTexture(backgroundTexture);
-		*/
-		currentWindow->draw(playersCard[i].getImage());
+	Sprite paintedCard;*/
+	int firstX = x, firstY = y;
 	
+	if (topOrBottom == BUTTOM)
+	{
+		for (int i = 0; i < numberOfCards; i++)
+		{
+			playersCard[i].drawThisCard(x, y, currentWindow);
+			x += 120;
+			if (i % 7 == 0 && i > 2)
+			{
+				x = firstX + 30;
+				firstX = x;
+				y += 30;
+			}
+		}
+	}
+	if (topOrBottom == TOP)
+	{
+			for (int i = 0; i < numberOfCards; i++)
+			{
+				playersCard[i].drawThisCard(x, y, currentWindow);
+				x -= 120;
+				if (i % 7 == 0 && i > 2)
+				{
+					x = firstX - 90;
+					firstX = x;
+					y += 30;
+				}
+			}
+		
 	}
 }
 	

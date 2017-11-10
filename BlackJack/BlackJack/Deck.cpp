@@ -4,7 +4,7 @@
 
 PlayingCard Deck::getCard()
 {
-	PlayingCard *selectedCard;
+	PlayingCard selectedCard;
 	int numberOfSelectedCard;
 
 	numberOfSelectedCard = (std::rand() % listOfCard->getLength(false) ) ;
@@ -12,7 +12,7 @@ PlayingCard Deck::getCard()
 	
 	try
 	{
-		selectedCard = &(listOfCard->getCard(numberOfSelectedCard));
+		selectedCard = listOfCard->getCard(numberOfSelectedCard);
 		listOfCard->delElement(numberOfSelectedCard);
 	}
 	catch(int error)
@@ -23,7 +23,7 @@ PlayingCard Deck::getCard()
 	}
 	
 	//PlayingCard selectedCard(2, 3);
-	return *selectedCard;
+	return selectedCard;
 }
 
 bool Deck::isEmpty()

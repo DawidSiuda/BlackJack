@@ -127,15 +127,18 @@
     <ClCompile Include="CardFigure.cpp" />
     <ClCompile Include="CardColor.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="GenText.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayingCard.cpp" />
+    <ClCompile Include="constVairable.cpp" />
     <ClCompile Include="WindowOfMenu.cpp" />
     <ClCompile Include="WindowOfPlay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="GenText.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayingCard.h" />

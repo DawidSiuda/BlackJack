@@ -21,7 +21,19 @@ short WindowOfPlay::play()
 	int sumOfFrames=0;
 	int temp = 0;
 	Event event;
+
+	const short BEATS = 0;
+	const short PLAYERS_TOUR = 1;
+	const short COMPUTERS_TOUR = 2;
+	const short SHUFFLE_CARD= 3;
+	const short WAIT = 4;
+
+	bool flag_giveCard = false;
+
+	short gameStatus = 1;
 	
+	GenText tellYourScore("Your Score: ", 100, 250, 40);
+	GenText score("", 340, 250, 40);
 	
 	while (mainWindow->isOpen())
 	{
@@ -47,9 +59,10 @@ short WindowOfPlay::play()
 						}
 						case(Keyboard::Space): //players get card
 						{
-							player.giveCard(myDeck->getCard());
-							
-							//playersCard[numberOfComputersCard++] = myDeck->getCard();
+							if (gameStatus == PLAYERS_TOUR)
+							{
+								flag_giveCard = true;
+							}
 							break;
 							
 						}
@@ -69,74 +82,48 @@ short WindowOfPlay::play()
 		mainWindow->clear(Color::Red);
 		
 
-		if (myDeck->isEmpty() == false)
-		{
+		/////////////////////////////////////////////////
+		//AI of game
 
-			try
-			{
-				//PlayingCard temp = myDeck->getCard();
-				//std::cout << " We have a: "<< temp.getName() << std::endl;
-			}
-			catch(int)
-			{
-				std::cout <<"ERROR::new card not founr" <<std::endl;
-			}
-		}
-		else
+		//end of desk
+		if (myDeck->isEmpty() == true)
 		{
 			myDeck->cardShuffle();
-
-			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			std::cout << "Tasuje :" << sumOfFrames << " " << sumOfFrames - temp << std::endl;
-			temp = sumOfFrames;
-			//myDeck->showDeck();
-			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}
-		sumOfFrames++;
+
+		if (flag_giveCard)
+		{
+			player.giveCard(myDeck->getCard());
+			flag_giveCard = false;
+
+		}
+
+		/////////////////////////////////////////////////
+		//show frame
+
 		mainWindow->draw(backgrounfPicture);
-		///////////////////////////////////////
-		sf::BlendMode blendMode(sf::BlendMode::Zero, sf::BlendMode::One, sf::BlendMode::Add, sf::BlendMode::DstAlpha, sf::BlendMode::OneMinusSrcAlpha, sf::BlendMode::Subtract);
 
-		Texture bbackgroundTexture;
-		bbackgroundTexture.loadFromFile("whiteBack.png");
-		
-		Texture backgroundTexture;
-		backgroundTexture.loadFromFile("_trefl.png");
+		switch (gameStatus)
+		{
+		case BEATS: 
+			break;
+		case PLAYERS_TOUR:
+			break;
+		case COMPUTERS_TOUR:
+			break;
+		case WAIT:
+			break;
+		default:
+			break;
+		}
 
-		Sprite first(bbackgroundTexture);
-		Sprite second(backgroundTexture);
-
-		RenderTexture newTexture;
-		newTexture.create(105, 150);
-		newTexture.clear(Color::Transparent);
+		tellYourScore.show(mainWindow);
+		score.show(mainWindow, player.getPoints());
 		
-		newTexture.draw(first);
-		newTexture.draw(second);
-		
-		
-		newTexture.
-		
-		
-		
-
-	
-		RectangleShape paintedCard;
-		//paintedCard.setTexture(&bbackgroundTexture);
-		//paintedCard.setTextureRect(&backgroundTexture);
-		paintedCard.setTexture(&newTexture.getTexture());
-		//paintedCard.setFillColor(Color::Red);
-		paintedCard.setPosition(300, 300);
-		paintedCard.setSize(Vector2f(105, 150));
-		/*
-		RectangleShape paintedCard(Vector2f(100.0f, 100.2f));
-		paintedCard.setFillColor(Color::Red);*/
-		mainWindow->draw(paintedCard);
-		///////////////////////////////////////////
-		//player.drawCards(0, 0, mainWindow);
-		
-
+		player.drawCards(110,310, mainWindow, BUTTOM);
+		player.drawCards(1000, 30, mainWindow, TOP);
 		mainWindow->display();
-
 	}
 	
 	return 0;
@@ -146,9 +133,11 @@ WindowOfPlay::WindowOfPlay(RenderWindow *handleToRenderWindow)
 {
 	
 	mainWindow = handleToRenderWindow;
-	myDeck = new Deck(4);
+
+	myDeck = new Deck(1);
 
 	loadMap();
+
 }
 WindowOfPlay::~WindowOfPlay()
 {

@@ -3,6 +3,8 @@
 #include "PlayingCard.h"
 #include "Deck.h"
 #include "Player.h"
+#include "GenText.h"
+#include "constVairable.cpp"
 
 #include <SFML/Graphics.hpp>
 

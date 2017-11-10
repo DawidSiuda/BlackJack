@@ -75,15 +75,18 @@ std::string PlayingCard::getName()
 	return name;
 }
 
-Sprite PlayingCard::getImage()
+void PlayingCard::drawThisCard(int x, int y, RenderWindow * window)
 {
-	return paintedCard;
+	paintedCard.setPosition(Vector2f(x, y));
+	paintedCard.setTexture(&mybackgroundTexture);
+	value.setPosition(Vector2f(x + 8, y + 8));
+	window->draw(paintedCard);
+	window->draw(value);
 }
 
-PlayingCard::PlayingCard(int setFigure, int setColor)
+PlayingCard::PlayingCard(int setFigure, int setColor):PlayingCard(CardFigure(setFigure), CardColor(setColor))
 {
-	color = CardColor(setColor);
-	figure = CardFigure(setFigure);
+	
 }
 
 PlayingCard::PlayingCard(CardFigure setFigure, CardColor setColor)
@@ -91,38 +94,95 @@ PlayingCard::PlayingCard(CardFigure setFigure, CardColor setColor)
 	color = setColor;
 	figure = setFigure;
 
-	/*
+	Texture tempBackgroundTexture;
+	tempBackgroundTexture.loadFromFile("TwhiteBack.png");
+
+	Texture colorTexture;
+
 	switch (color)
 	{
 	case HEARTS:
-		paintedCard.setTexture(heartBackgroundTexture);
+		colorTexture.loadFromFile("_heart.png");
 		break;
 	case TILES:
-		paintedCard.setTexture(titlesBackgroundTexture);
+		colorTexture.loadFromFile("_karo.png");
 		break;
 	case CLOVERS:
-		paintedCard.setTexture(cloversBackgroundTexture);
+		colorTexture.loadFromFile("_trefl.png");
 		break;
 	case PICKES:
-		paintedCard.setTexture(pickesBackgroundTexture);
-		break;
-	}*/
-	switch (color)
-	{
-	case HEARTS:
-		backgroundTexture.loadFromFile("_heart.png");
-		break;
-	case TILES:
-		backgroundTexture.loadFromFile("_karo.png");
-		break;
-	case CLOVERS:
-		backgroundTexture.loadFromFile("_trefl.png");
-		break;
-	case PICKES:
-		backgroundTexture.loadFromFile("_pik.png");
+		colorTexture.loadFromFile("_pik.png");
 		break;
 	}
-	paintedCard.setTexture(backgroundTexture);
+
+	RenderTexture newTexture;
+
+	Sprite backgrountImage(tempBackgroundTexture);
+	Sprite color(colorTexture);
+
+	newTexture.create(105, 150);
+	newTexture.clear(Color::Transparent);
+
+	newTexture.draw(backgrountImage);
+	newTexture.draw(color);
+
+	mybackgroundTexture = newTexture.getTexture();	
+	
+	paintedCard.setTexture(&mybackgroundTexture);
+	paintedCard.setSize(Vector2f(105, 150));
+	
+	std::string nameOfCard;
+	switch (figure)
+	{
+	case _2:
+		nameOfCard = "2";
+		break;
+	case _3:
+		nameOfCard = "3";
+		break;
+	case _4:
+		nameOfCard = "4";
+		break;
+	case _5:
+		nameOfCard = "5";
+		break;
+	case _6:
+		nameOfCard = "6";
+		break;
+	case _7:
+		nameOfCard = "7";
+		break;
+	case _8:
+		nameOfCard = "8";
+		break;
+	case _9:
+		nameOfCard = "9";
+		break;
+	case _10:
+		nameOfCard = "10";
+		break;
+	case _J:
+		nameOfCard = "J";
+		break;
+	case _Q:
+		nameOfCard = "Q";
+		break;
+	case _K:
+		nameOfCard = "K";
+		break;
+	case _A:
+		nameOfCard = "A";
+		break;
+	}
+
+	font.loadFromFile("CARDC___.TTF");
+	value.setFont(font);
+	value.setCharacterSize(40);
+	value.setStyle(Text::Bold);
+	value.setFillColor(Color::Black);
+	value.setString(nameOfCard);
+	
+	
 }
 
 PlayingCard::PlayingCard()

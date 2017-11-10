@@ -3,6 +3,7 @@
 #include "CardFigure.cpp"
 
 #include <string>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -17,13 +18,14 @@ class PlayingCard
 
 	//static Texture shapeTexture;
 	*/
-	Texture backgroundTexture;
+
 
 public:
 	CardColor getColor();
 	CardFigure getFigure();
 	std::string getName();
-	Sprite getImage();
+	//RectangleShape getImage();
+	void drawThisCard(int x, int y, RenderWindow *window);
 
 	PlayingCard(int setFigure,int setColor);
 	PlayingCard(CardFigure setFigure, CardColor setColor);
@@ -31,7 +33,12 @@ public:
 
 	~PlayingCard();
 private:
-	Sprite paintedCard;
+	Font font;
+	Texture mybackgroundTexture;
+	Image _backgrountImage;
+	Text value;
+
+	RectangleShape paintedCard;
 	CardColor color;
 	CardFigure figure;
 };
