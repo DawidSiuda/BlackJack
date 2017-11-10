@@ -1,11 +1,5 @@
 #pragma once
 #include "PlayingCard.h"
-/*class LinkedList
-{
-public:
-	LinkedList();
-	~LinkedList();
-};*/
 
 #include <iostream>
 #include <cstdlib>

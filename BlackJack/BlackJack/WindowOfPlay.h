@@ -1,6 +1,8 @@
 #pragma once
 #include "WindowOfPlay.h"
+#include "PlayingCard.h"
 #include "Deck.h"
+#include "Player.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -12,13 +14,28 @@ class WindowOfPlay
 public:
 	
 	short play();
-
 	WindowOfPlay(RenderWindow *handleToRenderWindow);
-	
 	~WindowOfPlay();
+
 public:
 	RenderWindow *mainWindow;
 	Deck *myDeck;
 	void giveSomethink();// usun¹æ 
+
+
+private:
+
+	
+	PlayingCard computersCard[22];
+	unsigned short numberOfPlayersCard;
+	unsigned short numberOfComputersCard;
+
+	Player computerAI;
+	Player player;
+
+	Texture tableTexture;
+	Sprite backgrounfPicture;
+
+	Sprite loadMap(string addres = "table.png");
 };
 

@@ -129,6 +129,7 @@
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayingCard.cpp" />
     <ClCompile Include="WindowOfMenu.cpp" />
     <ClCompile Include="WindowOfPlay.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="Deck.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PlayingCard.h" />
     <ClInclude Include="WindowOfMenu.h" />
     <ClInclude Include="WindowOfPlay.h" />

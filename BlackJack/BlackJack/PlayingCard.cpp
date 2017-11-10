@@ -1,7 +1,5 @@
 #include "PlayingCard.h"
 
-
-
 CardColor PlayingCard::getColor()
 {
 	return color;
@@ -77,6 +75,11 @@ std::string PlayingCard::getName()
 	return name;
 }
 
+Sprite PlayingCard::getImage()
+{
+	return paintedCard;
+}
+
 PlayingCard::PlayingCard(int setFigure, int setColor)
 {
 	color = CardColor(setColor);
@@ -87,6 +90,44 @@ PlayingCard::PlayingCard(CardFigure setFigure, CardColor setColor)
 {
 	color = setColor;
 	figure = setFigure;
+
+	/*
+	switch (color)
+	{
+	case HEARTS:
+		paintedCard.setTexture(heartBackgroundTexture);
+		break;
+	case TILES:
+		paintedCard.setTexture(titlesBackgroundTexture);
+		break;
+	case CLOVERS:
+		paintedCard.setTexture(cloversBackgroundTexture);
+		break;
+	case PICKES:
+		paintedCard.setTexture(pickesBackgroundTexture);
+		break;
+	}*/
+	switch (color)
+	{
+	case HEARTS:
+		backgroundTexture.loadFromFile("_heart.png");
+		break;
+	case TILES:
+		backgroundTexture.loadFromFile("_karo.png");
+		break;
+	case CLOVERS:
+		backgroundTexture.loadFromFile("_trefl.png");
+		break;
+	case PICKES:
+		backgroundTexture.loadFromFile("_pik.png");
+		break;
+	}
+	paintedCard.setTexture(backgroundTexture);
+}
+
+PlayingCard::PlayingCard()
+{
+	PlayingCard(0,0);
 }
 
 

@@ -10,7 +10,7 @@ void main()
 
 	//bool isOpen = false;
 
-	RenderWindow myWindow(VideoMode(1000, 700), "BlackJack");// tworzy okno
+	RenderWindow myWindow(VideoMode(1136, 640), "BlackJack");// tworzy okno
 
 	myWindow.setFramerateLimit(60); // limit FPS 60
 	myWindow.setVerticalSyncEnabled(true);// czekaj na synchronizacje pionow¹
