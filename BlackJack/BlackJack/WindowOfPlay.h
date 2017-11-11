@@ -32,12 +32,19 @@ private:
 	unsigned short numberOfPlayersCard;
 	unsigned short numberOfComputersCard;
 
-	Player computerAI;
+	Player croupierPlayer;
 	Player player;
 
 	Texture tableTexture;
 	Sprite backgrounfPicture;
 
 	Sprite loadMap(string addres = "table.png");
+
+	
+	RectangleShape backgroundForGameOver;
+	GenText textForGameOver;
+	GenText IItextForGameOver;
+
+	int whoIsTheWinner();
 };
 
