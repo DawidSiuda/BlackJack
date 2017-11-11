@@ -14,8 +14,8 @@ public:
 
 	void getElements(bool getOnConsole = false);//show all cards in console
 	PlayingCard getCard(int numberOfCard);//select card from deck of cards and give it in return
-	unsigned int getLength(bool onConsole = false);
 	void addElement(PlayingCard *data);
+	unsigned int getLength(bool onConsole = false);
 	bool delElement(int index);
 
 private:

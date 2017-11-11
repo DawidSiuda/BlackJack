@@ -1,15 +1,12 @@
 #include "Deck.h"
 
-
-
 PlayingCard Deck::getCard()
 {
 	PlayingCard selectedCard;
 	int numberOfSelectedCard;
 
 	numberOfSelectedCard = (std::rand() % listOfCard->getLength(false) ) ;
-	//numberOfSelectedCard = 50;
-	
+
 	try
 	{
 		selectedCard = listOfCard->getCard(numberOfSelectedCard);
@@ -21,8 +18,6 @@ PlayingCard Deck::getCard()
 		int errorCode = 2;
 		throw errorCode;
 	}
-	
-	//PlayingCard selectedCard(2, 3);
 	return selectedCard;
 }
 
@@ -50,8 +45,6 @@ bool Deck::cardShuffle()
 			{
 				PlayingCard *cad = new PlayingCard(k, j);
 				listOfCard->addElement(cad);
-
-
 			}
 		}
 	}
@@ -80,14 +73,11 @@ Deck::Deck(unsigned short numberOfDeckCard )
 			{
 				PlayingCard *cad = new PlayingCard(k, j);
 				listOfCard->addElement(cad);
-				
-
 			}
 		}
 	}
 	listOfCard->getElements();
 }
-
 
 Deck::~Deck()
 {

@@ -15,19 +15,17 @@ class WindowOfPlay
 {
 public:
 	
-	short play();
-	WindowOfPlay(RenderWindow *handleToRenderWindow);
-	~WindowOfPlay();
-
-public:
+	short play();	
 	RenderWindow *mainWindow;
 	Deck *myDeck;
 	void giveSomethink();// usun¹æ 
 
+	WindowOfPlay(RenderWindow *handleToRenderWindow);
+	~WindowOfPlay();
+
 
 private:
 
-	
 	PlayingCard computersCard[22];
 	unsigned short numberOfPlayersCard;
 	unsigned short numberOfComputersCard;
@@ -36,12 +34,12 @@ private:
 	Player player;
 
 	Texture tableTexture;
-	Sprite backgrounfPicture;
 
+	Sprite backgrounfPicture;
 	Sprite loadMap(string addres = "table.png");
 
-	
 	RectangleShape backgroundForGameOver;
+
 	GenText textForGameOver;
 	GenText IItextForGameOver;
 

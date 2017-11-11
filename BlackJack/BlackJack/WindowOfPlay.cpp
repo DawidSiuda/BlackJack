@@ -67,25 +67,21 @@ short WindowOfPlay::play()
 
 	int sumOfFrames=0;
 	int temp = 0;
+	int timeToWait = 0;
+
 	Event event;
 	Clock clock;
-	int timeToWait = 0;
+	
 
 	GenText drawYourScore("Your Score: ", 100, 250, 40);
 	GenText drawCroupierScore("Croupier score: ", 800, 250, 40);
 	GenText textMoneyPool("", 500, 260, 25);
 	GenText playersMoney("", 50, 570, 30);
-	GenText keysMessage("", 320, 560, 40, Color(255, 255, 255), "Queen of Clubs.otf");
+	GenText keysMessage("", 420, 560, 40, Color(255, 255, 255), "Queen of Clubs.otf");
 	
 
 	int money;
 	int moneyPool;
-
-	const short BEATS = 0;
-	const short PLAYERS_TOUR = 1;
-	const short COMPUTERS_TOUR = 2;
-	const short SHUFFLE_CARD= 3;
-	const short WAIT = 4;
 
 	bool flag_wait = false;
 	bool flag_getCard = false;
@@ -108,12 +104,11 @@ short WindowOfPlay::play()
 	//set started flags
 	flag_croupierLessThan17p = true;
 	flag_setMoney = true;
-	//flag_gameOver = true;
+
 	money = 2500;
 	moneyPool = 0;
-	//flag_playersTour = true;
-	//short gameStatus = 1;
-	
+
+	/*
 		std::cout << "flag_wait:----------------" << flag_wait <<
 					"\nflag_getCard:-------------" << flag_getCard <<
 					"\nflag_setMoney:------------" << flag_setMoney <<
@@ -125,28 +120,19 @@ short WindowOfPlay::play()
 					"\nflag_croupierLessThan17p:-" << flag_croupierLessThan17p <<
 					"\nflag_croupierMoreThan17p:-" << flag_croupierMoreThan17p
 					<< std::endl;
-	
-	
-	
-	
-	
-
+	*/
 	
 	while (mainWindow->isOpen())
 	{
-		//draw background 
-		//mainWindow->draw(backgrounfPicture);
-		
-		
-		while (mainWindow->pollEvent(event))// petla obs³ugi wydarzeñ
+		while (mainWindow->pollEvent(event))// event loop
 		{
 			switch (event.type)
 			{
-				case (Event::Closed):	//obs³uga przycisku zamkniêcia okna
+				case (Event::Closed):
 				{
 					mainWindow->close();
 				}
-				case (Event::KeyPressed): // obs³uga klawiszy klawiatury
+				case (Event::KeyPressed):
 				{
 					switch (event.key.code)
 					{
@@ -195,7 +181,6 @@ short WindowOfPlay::play()
 									money += moneyPool;
 									moneyPool = 0;
 									break;
-									//std::cout << whoIsTheWinner() << std::endl;	
 								}
 								
 								if (money == 0)
@@ -257,7 +242,6 @@ short WindowOfPlay::play()
 							player.showCards();
 							std::cout <<" -------------------- - "<< std::endl;
 							std::cout << "point: "<< player.getPoints() << std::endl;
-							//showCards(playersCard, numberOfComputersCard);
 							break;
 
 						}
@@ -270,8 +254,9 @@ short WindowOfPlay::play()
 				}
 			}
 		}
-		mainWindow->clear(Color::Red);
-		
+
+		/////////////////////////////////////////////////
+		//draw background
 		mainWindow->draw(backgrounfPicture);
 
 		/////////////////////////////////////////////////
@@ -291,7 +276,7 @@ short WindowOfPlay::play()
 			}
 			if (flag_computersTour && flag_firstTourOfCroupier)
 			{
-				std::cout << "im here 2 " << std::endl;
+				//std::cout << "im here 2 " << std::endl;
 
 				croupierPlayer.giveCard(myDeck->getCard());
 
@@ -309,7 +294,7 @@ short WindowOfPlay::play()
 			else
 			if (flag_playersTour && flag_firstTourOfPlayer)
 			{
-				std::cout << "im here 3" << std::endl;
+				//std::cout << "im here 3" << std::endl;
 
 				player.giveCard(myDeck->getCard());
 				
@@ -331,23 +316,23 @@ short WindowOfPlay::play()
 			{
 			
 				
-				std::cout << "im here 5 " << std::endl;
+				//std::cout << "im here 5 " << std::endl;
 				keysMessage.show(mainWindow, "SPACE: stand	     ENTER: hit");
 			}
 			else
 			if (flag_playersTour && flag_playerMoreThan21p && !flag_getCard)
 			{
-				std::cout << "im here 6 " << std::endl;
+				//std::cout << "im here 6 " << std::endl;
 			}
 			else
 			if (flag_playersTour && flag_playerMoreThan21p && flag_getCard)
 			{
-				std::cout << "im here 7" << std::endl;
+				//std::cout << "im here 7" << std::endl;
 			}
 			else
 			if (flag_computersTour && flag_croupierLessThan17p && !flag_firstTourOfCroupier)
 			{
-				std::cout << "im here 8" << std::endl;
+				//std::cout << "im here 8" << std::endl;
 
 				croupierPlayer.giveCard(myDeck->getCard());
 
@@ -371,7 +356,6 @@ short WindowOfPlay::play()
 		}
 		else
 		{
-			//clock.getElapsedTime().asSeconds();
 			if (clock.getElapsedTime().asMilliseconds() > timeToWait)
 			{
 				flag_wait = false;
@@ -384,7 +368,6 @@ short WindowOfPlay::play()
 		if (myDeck->isEmpty() == true)
 		{
 			myDeck->cardShuffle();
-			//std::cout << "Tasuje :" << sumOfFrames << " " << sumOfFrames - temp << std::endl;
 		}
 
 		//////////////////////////////////////////////////////////////

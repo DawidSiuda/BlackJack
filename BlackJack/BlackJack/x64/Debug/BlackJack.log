@@ -1,3 +1,4 @@
-﻿  main.cpp
+﻿     Creating library C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.lib and object C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.exp
+sfml-main-d.lib(MainWin32.cpp.obj) : warning LNK4099: PDB 'vc140.pdb' was not found with 'sfml-main-d.lib(MainWin32.cpp.obj)' or at 'C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\vc140.pdb'; linking object as if no debug info
   BlackJack.vcxproj -> C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.exe
   BlackJack.vcxproj -> C:\Users\admin\Documents\GitHub\BlackJack\BlackJack\x64\Debug\BlackJack.pdb (Partial PDB)

@@ -190,9 +190,6 @@ PlayingCard::PlayingCard()
 	PlayingCard(0,0);
 }
 
-
-
-
 PlayingCard::~PlayingCard()
 {
 }

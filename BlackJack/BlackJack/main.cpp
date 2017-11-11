@@ -16,7 +16,7 @@ void main()
 	GenText title("BlackJack", 80, 50, 110);
 	GenText menu("Press X to start game",200, 250, 50);
 	GenText aboutMe("Dawid Siuda", 1050, 610, 10 , Color(200, 200,  200), "arial.ttf");
-	GenText loading("Loading...", 450, 260, 30);
+	GenText loading("Loading...", 480, 280, 30);
 
 	/////////////////////////////////////////////////
 	//set attribute of window
@@ -39,15 +39,15 @@ void main()
 	{
 
 
-		while (myWindow.pollEvent(event))// petla obs³ugi wydarzeñ
+		while (myWindow.pollEvent(event))
 		{
 			switch (event.type)
 			{
-				case (Event::Closed):	//obs³uga przycisku zamkniêcia okna
+				case (Event::Closed):
 				{
 					myWindow.close();
 				}
-				case (Event::KeyPressed): // obs³uga klawiszy klawiatury
+				case (Event::KeyPressed):
 				{
 					switch (event.key.code)
 					{

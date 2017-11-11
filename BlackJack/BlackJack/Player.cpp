@@ -1,8 +1,5 @@
 #include "Player.h"
 
-
-
-
 void Player::giveCard(PlayingCard card)
 {
 	if (numberOfCards >= 22)
@@ -121,7 +118,6 @@ void Player::drawCards(int x, int y, RenderWindow * currentWindow, bool topOrBot
 	}
 }
 	
-
 Player::Player()
 {
 	numberOfCards = 0;
